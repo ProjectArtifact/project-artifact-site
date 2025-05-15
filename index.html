@@ -98,7 +98,7 @@
   </style>
 </head>
 <body>
-<header style="margin: 0; padding: 0;">
+<header style="margin: 0; padding: 0; position: relative;">
   <!-- Navigation -->
   <nav style="background-color: #263851; padding: 1rem 0; display: flex; justify-content: center; gap: 2rem;">
     <a href="index.html" style="color: #c02082; font-weight: 700; text-decoration: none; font-family: 'Oxanium', sans-serif;">Home</a>
@@ -109,11 +109,17 @@
   <!-- Banner Image -->
   <img src="assets/PA long.jpg"
        alt="Project Artifact Banner"
-       style="width: 100vw; max-width: 100%; height: auto; display: block; max-height: 500px; object-fit: cover;" />
+       style="width: 100vw; max-width: 100%; height: auto; display: block; max-height: 250px; object-fit: cover;" />
 
-  <!-- Button below the image -->
-  <div style="text-align: center; margin-top: 1.5rem;">
-    <a href="bios/index.html" class="btn-primary" 
+  <!-- Vertically Centered Button -->
+  <div style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  ">
+    <a href="bios/index.html" class="btn-primary"
        style="
          background-color: #c02082;
          color: #ebeded;
