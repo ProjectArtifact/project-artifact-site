@@ -180,19 +180,6 @@ body {
     box-shadow: 0 0 20px #c02082, 0 0 30px #263851;
   }
 </style>
-  <style>
-  .bio.glitch {
-    animation: glitchFade 0.3s ease-in-out;
-  }
-
-  @keyframes glitchFade {
-    0% { transform: skew(0deg); opacity: 0.6; }
-    25% { transform: skew(-3deg); opacity: 0.8; }
-    50% { transform: skew(3deg); opacity: 1; }
-    75% { transform: skew(-2deg); }
-    100% { transform: skew(0deg); }
-  }
-</style>
 
 
 <main style="padding: 2rem; max-width: 1200px; margin: auto;">
@@ -261,8 +248,6 @@ body {
     } else {
       el.style.maxHeight = '1000px';
       el.style.opacity = '1';
-      el.classList.add('glitch');
-      setTimeout(() => el.classList.remove('glitch'), 300);
     }
   }
 </script>
