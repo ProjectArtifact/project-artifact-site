@@ -143,46 +143,31 @@ body {
   </div>
 </header>
 
-<section class="section" id="characters">
-  <h2>Characters</h2>
-  <div class="card">
-    <h3>Dr. Gideon Gates</h3>
-    <p>Former neural systems architect and grandson of medical pioneer Dr. Elias Gates, Dr. Gideon Gates contributed significantly to early Project Artifact development.</p>
-  </div>
-  <div class="card">
-    <h3>Emmeline Riggs</h3>
-    <p>Simulation Integrity specialist known for her technical expertise and long-term collaboration with Dr. Gates.</p>
-  </div>
-  <div class="card">
-    <h3>Josiah Thorne</h3>
-    <p>Unaffiliated citizen known for unauthorized public preaching and unsanctioned gatherings. Visitors should avoid contact and report suspicious activity.</p>
-  </div>
-  <div class="card">
-    <h3>Nimrod (Simulated Entity)</h3>
-    <p>A high-impact simulated figure reconstructed from ancient records as part of Project Artifact's initiative. Access requires certification.</p>
-  </div>
-  <div class="card">
-    <h3>President Everit LeStrat</h3>
-    <p>Leader of Quanticorps since 2254, overseeing global infrastructure and data preservation efforts.</p>
-  </div>
-  <div class="card">
-    <h3>A.R.T. (Aggregated Recollection Transmitter)</h3>
-    <p>A friendly, user-facing simulation assistant guiding participants through Artifact memory streams.</p>
-  </div>
-  <div class="card">
-    <h3>Ryu</h3>
-    <p>Licensed vendor in Indago Prime; recommended to avoid speculative conversation in his establishment.</p>
-  </div>
-  <div class="card">
-    <h3>Grimm</h3>
-    <p>Local contact associated with New Smyrna; visitors should observe community conduct.</p>
-  </div>
-  <div class="card">
-    <h3>Director Vaughn</h3>
-    <p>Leads Quanticorps Security to maintain order across all operational zones.</p>
-  </div>
-</section>
+<main style="padding: 2rem; max-width: 1200px; margin: auto;">
+  <h2 style="font-family: 'Oxanium', sans-serif; color: #ebeded; text-align: center;">Characters</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
 
+    <!-- Character Card Example -->
+    <div style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
+      <img src="../assets/Gideon_Icon.png" alt="Gideon Gates" style="width: 100%; border-radius: 4px; cursor: pointer;" onclick="toggleBio('gideon')">
+      <h3 style="color: #c02082; font-family: 'Oxanium', sans-serif; margin-top: 1rem;">Gideon Gates</h3>
+      <p style="font-style: italic;">Disillusioned AI scientist seeking the truth.</p>
+      <div id="gideon" style="display: none; text-align: left; margin-top: 1rem;">
+        <p>Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.</p>
+      </div>
+    </div>
+
+    <!-- Repeat this block for each character with new IDs and info -->
+
+  </div>
+</main>
+
+<script>
+  function toggleBio(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
 <section class="section" id="organizations">
   <h2>Organizations</h2>
   <div class="card">
