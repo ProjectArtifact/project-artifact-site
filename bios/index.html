@@ -152,7 +152,7 @@ body {
       <img src="../assets/Gideon_Icon.png" alt="Gideon Gates" style="width: 100%; border-radius: 4px; cursor: pointer;" onclick="toggleBio('gideon')">
       <h3 style="color: #c02082; font-family: 'Oxanium', sans-serif; margin-top: 1rem;">Gideon Gates</h3>
       <p style="font-style: italic;">Disillusioned AI scientist seeking the truth.</p>
-      <div id="gideon" style="display: none; text-align: left; margin-top: 1rem;">
+      <div id="gideon" class="bio">
         <p>Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.</p>
       </div>
     </div>
@@ -165,7 +165,7 @@ body {
 <script>
   function toggleBio(id) {
     const el = document.getElementById(id);
-    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    el.classList.toggle('open');
   }
 </script>
 <section class="section" id="organizations">
