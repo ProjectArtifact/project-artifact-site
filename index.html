@@ -134,12 +134,12 @@ body {
 </header>
   <main>
       <img src="assets/Right_Geometric.png"
-     alt="Geometric Flair"
+      alt="Geometric Flair"
      style="
        position: fixed;
-       top: 0;
+       top: 120px; /* Adjust based on actual header height */
        right: 40px;
-       height: 100vh;
+       height: calc(100vh - 120px); /* Fill remaining height */
        z-index: 0;
        opacity: 0.1;
        pointer-events: none;
