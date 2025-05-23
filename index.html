@@ -99,6 +99,12 @@ body {
       border-radius: 8px;
     }
   </style>
+  <style>
+  @keyframes slowPulse {
+    0%, 100% { opacity: 0.08; transform: translateY(0); }
+    50% { opacity: 0.12; transform: translateY(1px); }
+  }
+</style>
 </head>
 <body>
 <header style="margin: 0; padding: 0; position: relative; background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);">
@@ -144,6 +150,7 @@ body {
        opacity: 0.1;
        pointer-events: none;
        user-select: none;
+       animation: slowPulse 6s ease-in-out infinite;
      ">
     <section>
       <div class="trailer-wrapper">
