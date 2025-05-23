@@ -101,15 +101,11 @@ body {
   </style>
 <style>
   @keyframes slowPulse {
-    0%, 100% {
-      opacity: 0.05;
-      transform: translateY(0);
-    }
-    50% {
-      opacity: 0.18;
-      transform: translateY(3px);
-    }
-     @keyframes glitchFlicker {
+    0%, 100% { opacity: 0.05; transform: translateY(0); }
+    50% { opacity: 0.18; transform: translateY(3px); }
+  }
+
+  @keyframes glitchFlicker {
     0%, 95%, 100% { filter: none; }
     96% { filter: contrast(1.5) brightness(1.3) hue-rotate(-5deg); }
     97% { filter: contrast(0.9) brightness(0.7) hue-rotate(10deg); }
