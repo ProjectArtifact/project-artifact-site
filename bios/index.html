@@ -140,12 +140,18 @@ body {
     98% { filter: contrast(1.2) brightness(1.1); }
     99% { filter: none; }
   }
+  @media (max-width: 768px) {
+    .flair-image {
+      display: none;
+    }
+  }
 </style>
   
 </head>
 <body>
 <img src="../assets/Right_Geometric.png"
       alt="Geometric Flair"
+      class="flair-image"
      style="
        position: fixed;
        top: 250px; /* Adjust based on actual header height */
