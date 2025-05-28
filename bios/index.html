@@ -232,7 +232,7 @@ body {
   <div class="image-container" style="position: relative; overflow: hidden;">
     <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs"
          style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;"
-         onclick="animateBio(this, 'gideon')">
+         onclick="animateBio(this, 'emmeline')">
     <div class="image-fade" style="
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: black; opacity: 0; transition: opacity 1s ease;
@@ -247,7 +247,7 @@ body {
 </main>
 
 <script>
-function toggleBio(bioId) {
+function animateBio(bioId) {
   const bio = document.getElementById(bioId);
 
   if (!bio.classList.contains('open')) {
