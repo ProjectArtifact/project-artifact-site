@@ -260,9 +260,7 @@ body {
   <h3>Gideon Gates</h3>
   <p class="role">AI scientist seeking the truth.</p>
 </div>
- 
-  </div>
-</div>
+
 
 <!-- Emmeline Riggs -->
   <div class="headshot-container" onclick="revealBio(this)">
@@ -282,27 +280,39 @@ body {
 
 <script>
 let activeContainer = null;
+let typingTimeout = null;  // store current timeout
+let typingIndex = 0;
 
 function revealBio(container) {
   const overlay = container.querySelector('.fade-overlay');
   const bioText = container.querySelector('.bio-text');
   const text = bioText.getAttribute('data-text');
 
-  // If a bio is already active, reset it
+  // If a bio is already active, reset it and clear typing timeout
   if (activeContainer && activeContainer !== container) {
     const activeOverlay = activeContainer.querySelector('.fade-overlay');
     const activeBioText = activeContainer.querySelector('.bio-text');
     activeContainer.classList.remove('active');
     activeOverlay.style.opacity = 0;
     activeBioText.textContent = '';
+
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+      typingTimeout = null;
+    }
   }
 
-  // If clicked again, close it
+  // If clicked again, close it and clear typing timeout
   if (activeContainer === container) {
     container.classList.remove('active');
     overlay.style.opacity = 0;
     bioText.textContent = '';
     activeContainer = null;
+
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+      typingTimeout = null;
+    }
     return;
   }
 
@@ -311,17 +321,20 @@ function revealBio(container) {
   overlay.style.opacity = 0.85;
 
   activeContainer = container;
+  typingIndex = 0;  // reset index
 
-  let i = 0;
-  const speed = 25;
+  const speed = 10;
 
   function type() {
-    if (i < text.length) {
-      bioText.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
+    if (typingIndex < text.length) {
+      bioText.textContent += text.charAt(typingIndex);
+      typingIndex++;
+      typingTimeout = setTimeout(type, speed);
+    } else {
+      typingTimeout = null;  // done typing
     }
   }
+  bioText.textContent = ''; // clear any old text before typing
   type();
 }
 </script>
