@@ -239,7 +239,7 @@ body {
       border-radius: 4px;
     "></div>
   </div>
-  <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
+  <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Emmeline Riggs</h3>
   <p style="font-style: italic;">Grounded technician and loyal friend.</p>
   <div id="emmeline" class="bio" style="color: #00ff00; font-family: monospace; white-space: pre-wrap; height: 120px; overflow: auto;"></div>
 </div>
@@ -284,6 +284,14 @@ function animateBio(bioId) {
 
     // Close the bio block
     bio.classList.remove('open');
+  }
+}
+</script>
+  <script>
+function animateBio(imageEl, bioId) {
+  const bioEl = document.getElementById(bioId);
+  if (bioEl) {
+    bioEl.classList.toggle('open');
   }
 }
 </script>
