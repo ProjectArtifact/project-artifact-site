@@ -211,18 +211,28 @@ body {
   background-size: cover;
 }
 
-.headshot-container.active .fade-overlay {
-  opacity: 0.85;
+.headshot-container.active .bio {
+  opacity: 1;
 }
 
 .bio {
-  max-height: 150px; /* Fixed height */
-  overflow: hidden;
-  margin-top: 1rem;
-  border-left: 3px solid #0f0;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 0.5rem;
-  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background: transparent; /* no background to see the fade-overlay */
+  color: #0f0;
+  font-family: monospace;
+  white-space: pre-wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
 }
 
 .bio-text {
@@ -243,11 +253,14 @@ body {
   <div class="image-wrapper">
     <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" class="headshot-image" />
     <div class="fade-overlay"></div>
+     <div class="bio">
+    <p class="bio-text" data-text="Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes."></p>
+  </div>
   </div>
   <h3>Gideon Gates</h3>
   <p class="role">AI scientist seeking the truth.</p>
-  <div class="bio">
-    <p class="bio-text" data-text="Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes."></p>
+</div>
+ 
   </div>
 </div>
 
@@ -268,17 +281,39 @@ body {
 </main>
 
 <script>
+let activeContainer = null;
+
 function revealBio(container) {
   const overlay = container.querySelector('.fade-overlay');
   const bioText = container.querySelector('.bio-text');
   const text = bioText.getAttribute('data-text');
-  
-  if (container.classList.contains('active')) return; // prevent re-trigger
 
+  // If a bio is already active, reset it
+  if (activeContainer && activeContainer !== container) {
+    const activeOverlay = activeContainer.querySelector('.fade-overlay');
+    const activeBioText = activeContainer.querySelector('.bio-text');
+    activeContainer.classList.remove('active');
+    activeOverlay.style.opacity = 0;
+    activeBioText.textContent = '';
+  }
+
+  // If clicked again, close it
+  if (activeContainer === container) {
+    container.classList.remove('active');
+    overlay.style.opacity = 0;
+    bioText.textContent = '';
+    activeContainer = null;
+    return;
+  }
+
+  // Activate new container
   container.classList.add('active');
+  overlay.style.opacity = 0.85;
+
+  activeContainer = container;
 
   let i = 0;
-  const speed = 25; // typing speed (ms)
+  const speed = 25;
 
   function type() {
     if (i < text.length) {
@@ -287,44 +322,7 @@ function revealBio(container) {
       setTimeout(type, speed);
     }
   }
-
-  // Start the typing effect
   type();
-}
-</script>
-<script>
-function revealBio(container) {
-  // Close other active bios
-  const activeContainers = document.querySelectorAll('.headshot-container.active');
-  activeContainers.forEach(active => {
-    if (active !== container) {
-      active.classList.remove('active');
-      const activeBioText = active.querySelector('.bio-text');
-      activeBioText.textContent = '';
-    }
-  });
-
-  // Already active? Do nothing
-  if (container.classList.contains('active')) return;
-
-  container.classList.add('active');
-
-  const bioTextElement = container.querySelector('.bio-text');
-  const fullText = bioTextElement.getAttribute('data-text');
-  bioTextElement.textContent = ''; // Clear existing text if any
-
-  let i = 0;
-  const speed = 25; // typing speed in ms
-
-  function typeWriter() {
-    if (i < fullText.length) {
-      bioTextElement.textContent += fullText.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-
-  typeWriter();
 }
 </script>
 </body>
