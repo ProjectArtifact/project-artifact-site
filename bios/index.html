@@ -1,182 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Project Artifact - Bios</title>
-<link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
-<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700&family=Play&display=swap" rel="stylesheet" />
-<style>
-:root {
-  --color-bg: #263851;
-  --color-accent: #c02082;
-  --color-text-light: #ebeded;
-  --font-title: 'Oxanium', sans-serif;
-  --font-body: 'Play', sans-serif;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Artifact</title>
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700&family=Play&display=swap" rel="stylesheet" />
+  <style>
+    /* Branding colors and fonts */
+    :root {
+      --color-bg: #263851;
+      --color-accent: #c02082;
+      --color-text-light: #ebeded;
+      --font-title: 'Oxanium', sans-serif;
+      --font-body: 'Play', sans-serif;
+    }
+    * {
+      box-sizing: border-box;
+    }
 body {
-  font-family: var(--font-body);
+  margin: 0;
+  font-family: 'Play', sans-serif;
   background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);
   background-attachment: fixed;
-  color: var(--color-text-light);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ebeded;
   line-height: 1.5;
 }
-header {
-  background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);
-  text-align: center;
-  padding: 1rem 0;
-}
-header img {
-  max-width: 300px;
-  width: 90vw;
-  height: auto;
-}
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 0.5rem;
-}
-nav a {
-  color: #ebeded;
-  font-weight: 700;
-  text-decoration: none;
-  font-family: var(--font-title);
-}
-nav a:hover { text-decoration: underline; }
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
-h2 {
-  text-align: center;
-  font-family: var(--font-title);
-  margin-bottom: 1rem;
-}
-.bios-grid {
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      background: linear-gradient(135deg, var(--color-bg), #3e5caa);
+    }
+    header img {
+      max-width: 250px;
+      width: 90vw;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 3rem;
+      margin: 0 0 1rem;
+    }
+    header p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: var(--color-text-light);
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      display: inline-block;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #a01a6c;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    /* Trailer embed responsive */
+    .trailer-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      border-radius: 8px;
+    }
+    .trailer-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 8px;
+    }
+        .bios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1rem;
 }
 .headshot-glow {
-  position: relative;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
-  transition: box-shadow 0.3s ease;
+  margin: auto;
 }
-.headshot-glow:hover {
-  box-shadow: 0 0 20px var(--color-accent), 0 0 30px #263851;
-}
-.headshot-glow img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.headshot-glow h3 {
-  color: var(--color-text-light);
-  font-family: var(--font-title);
-  margin-top: 0.5rem;
-  font-size: 1.3rem;
-}
-.headshot-glow p {
-  font-style: italic;
-  font-size: 0.9rem;
-}
-.bio {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.6s ease, opacity 0.5s ease;
-  background: rgba(0, 0, 0, 0.95);
-  color: #ebeded;
-  padding: 1rem;
-  border-radius: 8px;
-  z-index: 10;
-}
-.bio.open {
-  max-height: 500px; /* Adjust as needed */
-  opacity: 1;
-}
-.bio p {
-  animation: flickerIn 0.6s ease both;
-}
-@keyframes flickerIn {
-  0% { opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-/* Mobile: hide flair */
-@media (max-width: 768px) {
-  .flair-image { display: none; }
-}
+  </style>
+  <style>
+  .bio {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, opacity 0.5s ease;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #c02082;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+  }
+
+  .bio.open {
+    max-height: 1000px; /* Should be taller than your tallest bio */
+    opacity: 1;
+  }
+
+  .bio p {
+    animation: flickerIn 0.6s ease both;
+  }
+
+  @keyframes flickerIn {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
 </style>
+<style>
+  @keyframes slowPulse {
+    0%, 100% { opacity: 0.05; transform: translateY(0); }
+    50% { opacity: 0.18; transform: translateY(3px); }
+  }
+
+  @keyframes glitchFlicker {
+    0%, 95%, 100% { filter: none; }
+    96% { filter: contrast(1.5) brightness(1.3) hue-rotate(-5deg); }
+    97% { filter: contrast(0.9) brightness(0.7) hue-rotate(10deg); }
+    98% { filter: contrast(1.2) brightness(1.1); }
+    99% { filter: none; }
+  }
+  @media (max-width: 768px) {
+    .flair-image {
+      display: none;
+    }
+  }
+</style>
+  
 </head>
 <body>
-
-<!-- Flair images (right and left) -->
-<img src="../assets/Right_Geometric.png" alt="Geometric Flair" class="flair-image"
-     style="position: fixed; top: 250px; right: 40px; height: calc(100vh - 250px);
-            z-index: 0; opacity: 0.1; pointer-events: none; user-select: none;
-            animation: slowPulse 6s ease-in-out infinite, glitchFlicker 14s infinite;">
-<img src="../assets/Left_Geometric.png" alt="Geometric Flair" class="flair-image"
-     style="position: fixed; top: 250px; left: 40px; height: calc(100vh - 250px);
-            z-index: 0; opacity: 0.1; pointer-events: none; user-select: none;
-            animation: slowPulse 6s ease-in-out infinite, glitchFlicker 14s infinite;">
-
-<!-- Header -->
-<header>
-  <img src="../assets/PA_Logo_Long.png" alt="Project Artifact Title" />
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="index.html">Bios</a>
+<img src="../assets/Right_Geometric.png"
+      alt="Geometric Flair"
+      class="flair-image"
+     style="
+       position: fixed;
+       top: 250px; /* Adjust based on actual header height */
+       right: 40px;
+       height: calc(100vh - 250px); /* Fill remaining height */
+       z-index: 0;
+       opacity: 0.1;
+       pointer-events: none;
+       user-select: none;
+       animation: slowPulse 6s ease-in-out infinite, glitchFlicker 14s infinite;
+     ">
+  <img src="../assets/Left_Geometric.png"
+      alt="Geometric Flair"
+      class="flair-image"
+     style="
+       position: fixed;
+       top: 250px; /* Adjust based on actual header height */
+       left: 40px;
+       height: calc(100vh - 250px); /* Fill remaining height */
+       z-index: 0;
+       opacity: 0.1;
+       pointer-events: none;
+       user-select: none;
+       animation: slowPulse 6s ease-in-out infinite, glitchFlicker 14s infinite;
+     ">
+<header style="margin: 0; padding: 0; position: relative; background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);">
+  <!-- Navigation -->
+  <nav style="background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%); padding: 1rem 0; display: flex; justify-content: center; gap: 2rem;">
+  <div style="max-width: 1100px; margin: auto; display: flex; justify-content: flex-end; gap: 1rem; padding: 1rem;">
+    <a href="../index.html" style="color: #ebeded; font-weight: 700; text-decoration: none; font-family: 'Oxanium', sans-serif;">Home</a>
+    <a href="../bios/index.html" style="color: #ebeded; font-weight: 700; text-decoration: none; font-family: 'Oxanium', sans-serif;">Bios</a>
+  </div>
   </nav>
+
+  <!-- Title Display -->
+  <div style="text-align: center; padding: 1.5rem 1rem;">
+    <img src="../assets/PA_Logo_Long.png" alt="Project Artifact Title" style="max-width: 90%; height: auto;" />
+  </div>
 </header>
 
-<main>
-  <h2>Characters</h2>
+  <style>
+  .bio {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, opacity 0.5s ease;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #c02082;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+  }
+
+  .bio.open {
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  .bio p {
+    animation: flickerIn 0.6s ease both;
+  }
+
+  @keyframes flickerIn {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  .headshot-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .headshot-glow:hover {
+    box-shadow: 0 0 20px #c02082, 0 0 30px #263851;
+  }
+</style>
+  
+
+
+<main style="max-width: 1200px; margin: auto; padding: 1rem;">
+  <h2 style="text-align: center;">Characters</h2>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+
+  
+  <!-- The single outer grid wrapping the bios -->
   <div class="bios-grid">
-
-    <!-- Gideon Gates -->
-    <div class="headshot-glow">
-      <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" onclick="toggleBio('gideon')">
-      <h3>Gideon Gates</h3>
-      <p>AI scientist seeking the truth.</p>
-      <div id="gideon" class="bio">
-        <p>Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.</p>
-      </div>
-    </div>
-
-    <!-- Emmeline Riggs -->
-    <div class="headshot-glow">
-      <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" onclick="toggleBio('em')">
-      <h3>Emmeline Riggs</h3>
-      <p>Grounded technician and loyal friend.</p>
-      <div id="em" class="bio">
-        <p>Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own.</p>
-      </div>
-    </div>
-
-    <!-- Add other character cards here following the same pattern -->
-
+    
+<!-- Gideon Gates -->
+<div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center; position: relative; overflow: hidden;">
+  <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('gideon')">
+  <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
+  <p style="font-style: italic;">AI scientist seeking the truth.</p>
+  <div id="gideon" class="bio" style="position: relative; z-index: 1; background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 6px; width: 100%; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.5s ease;">
+    <p>Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.</p>
   </div>
+</div>
+
+<!-- Emmeline Riggs -->
+<div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
+  <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('em')">
+  <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Emmeline Riggs</h3>
+  <p style="font-style: italic;">Grounded technician and loyal friend.</p>
+  <div id="em" class="bio" style="position: relative; z-index: 1; background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 6px; width: 100%; left: 0; top: 0; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.5s ease;">
+    <p>Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own.</p>
+  </div>
+</div>
+</div> <!-- end .bios-grid -->
 </main>
 
 <script>
-function toggleBio(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle('open');
-}
+  function toggleBio(id) {
+    const el = document.getElementById(id);
+    if (el.style.maxHeight && el.style.maxHeight !== '0px') {
+      el.style.maxHeight = '0';
+      el.style.opacity = '0';
+      el.classList.remove('glitch');
+    } else {
+      el.style.maxHeight = '1000px';
+      el.style.opacity = '1';
+    }
+  }
 </script>
-
 </body>
 </html>
