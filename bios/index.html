@@ -232,31 +232,6 @@ body {
   opacity: 0;
   pointer-events: none;
   z-index: 3;
-  overflow: hidden;
-}
-
-/* Pseudo element that holds many tiny dots */
-.bio::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1.5px),
-    radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1.5px),
-    radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1.5px);
-  background-position: 0 0, 10px 10px, 5px 5px;
-  background-size: 15px 15px;
-  animation: flicker 3s linear infinite;
-  z-index: 1;
-  mix-blend-mode: screen;
-  opacity: 0.25;
-}
-
-@keyframes flicker {
-  0%, 100% { opacity: 0.05; }
-  50% { opacity: 0.1; }
-}
 
 .bio-text {
   color: #0f0;
