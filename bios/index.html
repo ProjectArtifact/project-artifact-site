@@ -194,35 +194,66 @@ body {
 </header>
 
   <style>
-  .bio {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.6s ease, opacity 0.5s ease;
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 3px solid #c02082;
-    padding: 0 1rem;
-    margin-top: 1rem;
-    border-radius: 4px;
-  }
-  .bio.open {
-    max-height: 1000px;
-    opacity: 1;
-  }
-  .bio p {
-    animation: flickerIn 0.6s ease both;
-  }
-  @keyframes flickerIn {
-    0% { opacity: 0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
-  .headshot-glow {
-    transition: box-shadow 0.3s ease;
-  }
-  .headshot-glow:hover {
-    box-shadow: 0 0 20px #c02082, 0 0 30px #263851;
-  }
+ .headshot-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.headshot-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+}
+
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+  background-image: url('../assets/static.gif'); /* Use your static GIF or noise PNG */
+  background-size: cover;
+}
+
+.headshot-container.active .fade-overlay {
+  opacity: 0.85;
+}
+
+.bio {
+  max-height: 150px; /* Fixed height */
+  overflow: hidden;
+  margin-top: 1rem;
+  border-left: 3px solid #0f0;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.bio-text {
+  color: #0f0;
+  font-family: monospace;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
 </style>
   
 <main style="max-width: 1200px; margin: auto; padding: 1rem;">
@@ -231,39 +262,58 @@ body {
 <div class="bios-grid">
     
 <!-- Gideon Gates -->
-  <div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
-     <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('gideon')">
-     <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
-     <p style="font-style: italic;">AI scientist seeking the truth.</p>
-     <div id="gideon" class="bio">
-       <p>Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.</p>
-     </div>
-   </div>
+<div class="headshot-container" onclick="revealBio(this)">
+  <div class="image-wrapper">
+    <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" class="headshot-image" />
+    <div class="fade-overlay"></div>
+  </div>
+  <h3>Gideon Gates</h3>
+  <p class="role">AI scientist seeking the truth.</p>
+  <div class="bio">
+    <p class="bio-text" data-text="Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes."></p>
+  </div>
+</div>
 
 <!-- Emmeline Riggs -->
-  <div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
-     <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('em')">
-     <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Emmeline Riggs</h3>
-     <p style="font-style: italic;">Grounded technician and loyal friend.</p>
-     <div id="em" class="bio">
-       <p>Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own.</p>
-     </div>
-   </div>
+  <div class="headshot-container" onclick="revealBio(this)">
+  <div class="image-wrapper">
+    <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" class="headshot-image" />
+    <div class="fade-overlay"></div>
+  </div>
+  <h3>Emmeline Riggs</h3>
+  <p class="role">Grounded technician and loyal friend.</p>
+  <div class="bio">
+    <p class="bio-text" data-text="Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own."></p>
+  </div>
+</div>
+
   </div> <!-- end .bios-grid -->
 </main>
 
 <script>
-  function toggleBio(id) {
-    const el = document.getElementById(id);
-    if (el.style.maxHeight && el.style.maxHeight !== '0px') {
-      el.style.maxHeight = '0';
-      el.style.opacity = '0';
-      el.classList.remove('glitch');
-    } else {
-      el.style.maxHeight = '1000px';
-      el.style.opacity = '1';
+function revealBio(container) {
+  const overlay = container.querySelector('.fade-overlay');
+  const bioText = container.querySelector('.bio-text');
+  const text = bioText.getAttribute('data-text');
+  
+  if (container.classList.contains('active')) return; // prevent re-trigger
+
+  container.classList.add('active');
+
+  let i = 0;
+  const speed = 25; // typing speed (ms)
+
+  function type() {
+    if (i < text.length) {
+      bioText.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
     }
   }
+
+  // Start the typing effect
+  type();
+}
 </script>
 </body>
 </html>
