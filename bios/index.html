@@ -294,17 +294,38 @@ function revealBio(container) {
 </script>
 <script>
 function revealBio(container) {
-  container.classList.toggle('active');
-  const bio = container.querySelector('.bio');
-  bio.classList.toggle('open');
-}
-
-// Fill in the bio text from the data-text attribute
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.bio-text').forEach(function(el) {
-    el.textContent = el.getAttribute('data-text');
+  // Close other active bios
+  const activeContainers = document.querySelectorAll('.headshot-container.active');
+  activeContainers.forEach(active => {
+    if (active !== container) {
+      active.classList.remove('active');
+      const activeBioText = active.querySelector('.bio-text');
+      activeBioText.textContent = '';
+    }
   });
-});
+
+  // Already active? Do nothing
+  if (container.classList.contains('active')) return;
+
+  container.classList.add('active');
+
+  const bioTextElement = container.querySelector('.bio-text');
+  const fullText = bioTextElement.getAttribute('data-text');
+  bioTextElement.textContent = ''; // Clear existing text if any
+
+  let i = 0;
+  const speed = 25; // typing speed in ms
+
+  function typeWriter() {
+    if (i < fullText.length) {
+      bioTextElement.textContent += fullText.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  typeWriter();
+}
 </script>
 </body>
 </html>
