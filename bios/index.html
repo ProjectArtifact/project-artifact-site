@@ -315,5 +315,12 @@ function revealBio(container) {
   type();
 }
 </script>
+  <script>
+function revealBio(container) {
+  container.classList.toggle('active');
+  const bio = container.querySelector('.bio');
+  bio.classList.toggle('open');
+}
+</script>
 </body>
 </html>
