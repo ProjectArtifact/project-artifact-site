@@ -147,6 +147,7 @@ body {
     }
   }
 </style>
+  
 </head>
 <body>
 <img src="../assets/Right_Geometric.png"
@@ -227,7 +228,18 @@ body {
   .headshot-glow:hover {
     box-shadow: 0 0 20px #c02082, 0 0 30px #263851;
   }
+    .bios-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1rem;
+}
+
+.headshot-glow {
+  margin: auto;
+}
 </style>
+  
 
 
 <main style="padding: 2rem; max-width: 1100px; margin: auto; padding-right: 180px; padding-left: 180px;">
@@ -235,7 +247,7 @@ body {
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
 
 <!-- Gideon Gates -->
-<div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center; position: relative; overflow: hidden;">
+<div class="headshot-glow bios-grid" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center; position: relative; overflow: hidden;">
   <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('gideon')">
   <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
   <p style="font-style: italic;">AI scientist seeking the truth.</p>
@@ -245,7 +257,7 @@ body {
 </div>
 
 <!-- Emmeline Riggs -->
-<div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
+<div class="headshot-glow bios-grid" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
   <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('em')">
   <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Emmeline Riggs</h3>
   <p style="font-style: italic;">Grounded technician and loyal friend.</p>
