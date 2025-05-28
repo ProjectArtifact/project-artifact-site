@@ -247,33 +247,45 @@ body {
 </main>
 
 <script>
-  const bios = {
-    'gideon': `Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.`
-    'emmeline': 'Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own.'
-  };
+function toggleBio(bioId) {
+  const bio = document.getElementById(bioId);
 
-  function animateBio(imgElement, bioId) {
-    const fadeOverlay = imgElement.nextElementSibling;
-    const bioElement = document.getElementById(bioId);
+  if (!bio.classList.contains('open')) {
+    // Close any other open bios
+    document.querySelectorAll('.bio.open').forEach(b => b.classList.remove('open'));
+    
+    // Fade out the image to black
+    const headshot = document.querySelector(`img[onclick="toggleBio('${bioId}')"]`);
+    headshot.style.transition = 'opacity 0.5s ease';
+    headshot.style.opacity = '0';
+    setTimeout(() => {
+      headshot.style.filter = 'brightness(0)';
+    }, 500);
 
-    // Fade image to black
-    fadeOverlay.style.opacity = 1;
+    // Open the bio block
+    bio.classList.add('open');
 
-    // Clear existing bio text
-    bioElement.textContent = '';
-
-    // Animate typing effect
-    const bioText = bios[bioId];
+    // Matrix-like typing effect
+    const text = bio.querySelector('p').innerText;
+    bio.querySelector('p').innerText = '';
     let index = 0;
     const interval = setInterval(() => {
-      if (index < bioText.length) {
-        bioElement.textContent += bioText[index];
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 25); // Adjust typing speed here
+      bio.querySelector('p').innerHTML += `<span style="color: #00ff00;">${text[index]}</span>`;
+      index++;
+      if (index === text.length) clearInterval(interval);
+    }, 30);
+
+  } else {
+    // Fade image back to normal
+    const headshot = document.querySelector(`img[onclick="toggleBio('${bioId}')"]`);
+    headshot.style.transition = 'filter 0.5s ease, opacity 0.5s ease';
+    headshot.style.filter = 'none';
+    headshot.style.opacity = '1';
+
+    // Close the bio block
+    bio.classList.remove('open');
   }
+}
 </script>
 </body>
 </html>
