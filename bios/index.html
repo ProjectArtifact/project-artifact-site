@@ -108,28 +108,45 @@ body {
 .headshot-glow {
   margin: auto;
 }
-  .bio {
+ .bio {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.6s ease, opacity 0.5s ease;
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 3px solid #c02082;
-    padding: 0 1rem;
+    transition: max-height 0.2s ease, opacity 0.2s ease;
+    background: rgba(0, 0, 0, 0.9);
+    border-left: 3px solid #0f0;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
     margin-top: 1rem;
     border-radius: 4px;
+    box-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+    padding: 0 1rem;
+    position: relative;
   }
+
   .bio.open {
-    max-height: 1000px; /* Should be taller than your tallest bio */
+    max-height: 1000px;
     opacity: 1;
+    padding: 1rem;
   }
+
   .bio p {
-    animation: flickerIn 0.6s ease both;
+    white-space: pre-wrap;
+    overflow: hidden;
+    border-right: .15em solid #0f0;
+    animation:
+      staticFlicker 0.3s linear,
+      typewriter 2s steps(40, end) forwards;
   }
-  @keyframes flickerIn {
-    0% { opacity: 0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+
+  @keyframes staticFlicker {
+    0%, 20%, 40%, 60%, 80%, 100% { opacity: 1; filter: grayscale(1) contrast(3); }
+    10%, 30%, 50%, 70%, 90% { opacity: 0; }
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
   }
   @keyframes slowPulse {
     0%, 100% { opacity: 0.05; transform: translateY(0); }
@@ -254,14 +271,20 @@ body {
 
 <script>
   function toggleBio(id) {
-    const el = document.getElementById(id);
-    if (el.style.maxHeight && el.style.maxHeight !== '0px') {
-      el.style.maxHeight = '0';
-      el.style.opacity = '0';
-      el.classList.remove('glitch');
+    const bio = document.getElementById(id);
+
+    if (bio.classList.contains('open')) {
+      bio.classList.remove('open');
     } else {
-      el.style.maxHeight = '1000px';
-      el.style.opacity = '1';
+      bio.classList.add('open');
+
+      // Restart animation
+      const paragraph = bio.querySelector('p');
+      paragraph.style.animation = 'none';
+      paragraph.offsetHeight; // Trigger reflow
+      paragraph.style.animation = '';
+      paragraph.style.animation =
+        'staticFlicker 0.3s linear, typewriter 2s steps(40, end) forwards';
     }
   }
 </script>
