@@ -105,48 +105,11 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   padding: 1rem;
 }
-.headshot-glow {
-  margin: auto;
-}
- .bio {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease, opacity 0.2s ease;
-    background: rgba(0, 0, 0, 0.9);
-    border-left: 3px solid #0f0;
-    color: #0f0;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 1rem;
-    border-radius: 4px;
-    box-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-    padding: 0 1rem;
-    position: relative;
+  .headshot-glow {
+    transition: box-shadow 0.3s ease;
   }
-
-  .bio.open {
-    max-height: 1000px;
-    opacity: 1;
-    padding: 1rem;
-  }
-
-  .bio p {
-    white-space: pre-wrap;
-    overflow: hidden;
-    border-right: .15em solid #0f0;
-    animation:
-      staticFlicker 0.3s linear,
-      typewriter 2s steps(40, end) forwards;
-  }
-
-  @keyframes staticFlicker {
-    0%, 20%, 40%, 60%, 80%, 100% { opacity: 1; filter: grayscale(1) contrast(3); }
-    10%, 30%, 50%, 70%, 90% { opacity: 0; }
-  }
-
-  @keyframes typewriter {
-    from { width: 0; }
-    to { width: 100%; }
+  .headshot-glow:hover {
+    box-shadow: 0 0 20px #c02082, 0 0 30px #263851;
   }
   @keyframes slowPulse {
     0%, 100% { opacity: 0.05; transform: translateY(0); }
@@ -248,44 +211,68 @@ body {
 <div class="bios-grid">
     
 <!-- Gideon Gates -->
-  <div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
-     <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('gideon')">
-     <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
-     <p style="font-style: italic;">AI scientist seeking the truth.</p>
-     <div id="gideon" class="bio">
-       <p>Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.</p>
-     </div>
-   </div>
+<div class="headshot-glow bio-container" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
+  <div class="image-container" style="position: relative; overflow: hidden;">
+    <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates"
+         style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;"
+         onclick="animateBio(this, 'gideon')">
+    <div class="image-fade" style="
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: black; opacity: 0; transition: opacity 1s ease;
+      border-radius: 4px;
+    "></div>
+  </div>
+  <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
+  <p style="font-style: italic;">AI scientist seeking the truth.</p>
+  <div id="gideon" class="bio" style="color: #00ff00; font-family: monospace; white-space: pre-wrap; height: 120px; overflow: auto;"></div>
+</div>
 
 <!-- Emmeline Riggs -->
-  <div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
-     <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('em')">
-     <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Emmeline Riggs</h3>
-     <p style="font-style: italic;">Grounded technician and loyal friend.</p>
-     <div id="em" class="bio">
-       <p>Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own.</p>
-     </div>
-   </div>
-  </div> <!-- end .bios-grid -->
+<div class="headshot-glow bio-container" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
+  <div class="image-container" style="position: relative; overflow: hidden;">
+    <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs"
+         style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;"
+         onclick="animateBio(this, 'gideon')">
+    <div class="image-fade" style="
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: black; opacity: 0; transition: opacity 1s ease;
+      border-radius: 4px;
+    "></div>
+  </div>
+  <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
+  <p style="font-style: italic;">Grounded technician and loyal friend.</p>
+  <div id="emmeline" class="bio" style="color: #00ff00; font-family: monospace; white-space: pre-wrap; height: 120px; overflow: auto;"></div>
+</div>
+
 </main>
 
 <script>
-  function toggleBio(id) {
-    const bio = document.getElementById(id);
+  const bios = {
+    'gideon': `Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes.`
+    'emmeline': 'Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own.'
+  };
 
-    if (bio.classList.contains('open')) {
-      bio.classList.remove('open');
-    } else {
-      bio.classList.add('open');
+  function animateBio(imgElement, bioId) {
+    const fadeOverlay = imgElement.nextElementSibling;
+    const bioElement = document.getElementById(bioId);
 
-      // Restart animation
-      const paragraph = bio.querySelector('p');
-      paragraph.style.animation = 'none';
-      paragraph.offsetHeight; // Trigger reflow
-      paragraph.style.animation = '';
-      paragraph.style.animation =
-        'staticFlicker 0.3s linear, typewriter 2s steps(40, end) forwards';
-    }
+    // Fade image to black
+    fadeOverlay.style.opacity = 1;
+
+    // Clear existing bio text
+    bioElement.textContent = '';
+
+    // Animate typing effect
+    const bioText = bios[bioId];
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < bioText.length) {
+        bioElement.textContent += bioText[index];
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 25); // Adjust typing speed here
   }
 </script>
 </body>
