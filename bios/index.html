@@ -239,7 +239,8 @@ body {
   }
 </style>
   
-
+  <!-- The single outer grid wrapping the bios -->
+  <div class="bios-grid">
 
 <main style="max-width: 1200px; margin: auto; padding: 1rem;">
   <h2 style="text-align: center;">Characters</h2>
@@ -247,7 +248,6 @@ body {
 
 <!-- Gideon Gates -->
 <div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center; position: relative; overflow: hidden;">
-  <div class="bios-grid">
   <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('gideon')">
   <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Gideon Gates</h3>
   <p style="font-style: italic;">AI scientist seeking the truth.</p>
@@ -258,14 +258,15 @@ body {
 
 <!-- Emmeline Riggs -->
 <div class="headshot-glow" style="background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; text-align: center;">
-  <div class="bios-grid">
   <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" class="headshot-glow" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; cursor: pointer;" onclick="toggleBio('em')">
   <h3 style="color: #ebeded; font-family: 'Oxanium', sans-serif; margin-top: 1rem; font-size: 1.5rem; text-shadow: 0 0 5px #c02082, 0 0 10px #263851;">Emmeline Riggs</h3>
   <p style="font-style: italic;">Grounded technician and loyal friend.</p>
   <div id="em" class="bio" style="position: relative; z-index: 1; background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 6px; width: 100%; left: 0; top: 0; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.5s ease;">
     <p>Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own.</p>
   </div>
-</div>
+  </div>
+</div> <!-- end .bios-grid -->
+
 </main>
 
 <script>
