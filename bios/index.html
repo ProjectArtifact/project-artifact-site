@@ -108,29 +108,6 @@ body {
 .headshot-glow {
   margin: auto;
 }
-  .bio {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.6s ease, opacity 0.5s ease;
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 3px solid #c02082;
-    padding: 0 1rem;
-    margin-top: 1rem;
-    border-radius: 4px;
-  }
-  .bio.open {
-    max-height: 1000px; /* Should be taller than your tallest bio */
-    opacity: 1;
-  }
-  .bio p {
-    animation: flickerIn 0.6s ease both;
-  }
-  @keyframes flickerIn {
-    0% { opacity: 0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
   @keyframes slowPulse {
     0%, 100% { opacity: 0.05; transform: translateY(0); }
     50% { opacity: 0.18; transform: translateY(3px); }
@@ -315,12 +292,19 @@ function revealBio(container) {
   type();
 }
 </script>
-  <script>
+<script>
 function revealBio(container) {
   container.classList.toggle('active');
   const bio = container.querySelector('.bio');
   bio.classList.toggle('open');
 }
+
+// Fill in the bio text from the data-text attribute
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.bio-text').forEach(function(el) {
+    el.textContent = el.getAttribute('data-text');
+  });
+});
 </script>
 </body>
 </html>
