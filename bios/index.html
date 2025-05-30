@@ -215,22 +215,16 @@ body {
 }
 
 .bio {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  position: relative;
+  background-color: black;
+  border: 1px solid #0f0;
   padding: 1rem;
-  color: #0f0;
-  font-family: monospace;
-  white-space: pre-wrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 3;
+  margin: 1rem 0;
   overflow: hidden;
-  background: black;
+  height: 200px; /* fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Scanlines overlay */
@@ -287,15 +281,12 @@ body {
 }
 
 .bio-text {
+  display: inline-block;
+  transform-origin: top left;
+  white-space: normal;
+  word-break: break-word;
   color: #0f0;
-  font-family: monospace;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  max-width: 100%;
-  box-sizing: border-box;
-  line-height: 1.6;
-  font-size: clamp(0.5rem, 3.5vw, 1.15rem);
-}
+  line-height: 1.2;
 }
 </style>
   
@@ -310,8 +301,8 @@ body {
     <img src="../assets/Gideon_Icon_v2.png" alt="Gideon Gates" class="headshot-image" />
     <div class="fade-overlay"></div>
      <div class="bio">
-    <p class="bio-text" data-text="Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes."></p>
-  </div>
+    <div class="bio-text" data-text="Gideon Gates is a gifted scientist and the grandson of Dr. Elias Gates, the renowned medical pioneer who helped eradicate multiple post-war diseases. Though Gideon followed in his grandfather’s scientific footsteps, his brilliance led him down a very different path—into the realm of artificial intelligence and the development of Project Artifact. Once inspired by the promise of discovery, Gideon has grown disillusioned with corporate life and the cold systems that drive it. He believes that a scientist must seek the truth beyond all else, but the deeper he searches, the more dangerous that truth becomes."></p>
+  </div></div>
   </div>
   <h3>Gideon Gates</h3>
   <p class="role">AI scientist seeking the truth.</p>
@@ -324,8 +315,8 @@ body {
     <img src="../assets/Em_Icon_v2.png" alt="Emmeline Riggs" class="headshot-image" />
     <div class="fade-overlay"></div>
     <div class="bio">
-      <p class="bio-text" data-text="Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own."></p>
-    </div>
+      <div class="bio-text" data-text="Emmeline Riggs is an AI technician with a sharp mind and a steady hand in high-pressure environments. Practical and level-headed, she’s been Gideon’s closest colleague for years and one of the few people who understands his intellect and his eccentricities. While she believes in Quanticorps’ mission, Em can’t ignore the toll that Project Artifact has taken on her friend. As Gideon begins to question everything, Em finds herself asking quiet questions of her own."></p>
+    </div></div>
   </div>
       <h3>Emmeline Riggs</h3>
   <p class="role">Grounded technician and loyal friend.</p>
@@ -394,6 +385,32 @@ function revealBio(container) {
   bioText.textContent = ''; // clear any old text before typing
   type();
 }
+
+function fitText() {
+  const bio = document.querySelector('.bio');
+  const bioText = document.querySelector('.bio-text');
+  const bioHeight = bio.clientHeight;
+  const bioWidth = bio.clientWidth;
+
+  // Reset scale
+  bioText.style.transform = 'scale(1)';
+
+  const textHeight = bioText.scrollHeight;
+  const textWidth = bioText.scrollWidth;
+
+  // Calculate scale factors
+  const scaleY = bioHeight / textHeight;
+  const scaleX = bioWidth / textWidth;
+  const scale = Math.min(scaleY, scaleX, 1);
+
+  // Apply scale
+  bioText.style.transform = `scale(${scale})`;
+}
+
+// Fit on load
+window.addEventListener('load', fitText);
+// Fit on resize
+window.addEventListener('resize', fitText);
 </script>
 </body>
 </html>
