@@ -291,12 +291,21 @@ body {
   font-family: monospace;
   white-space: pre-wrap;
   overflow-wrap: break-word;
-  font-size: 1.15rem; /* increase font size for better readability */
-  line-height: 1.6;    /* optional: add line height for readability */
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 1.15rem;
+  line-height: 1.6;
 }
+
 @media (max-width: 600px) {
   .bio-text {
-    font-size: 0.9rem;
+    font-size: 4vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .bio-text {
+    font-size: 3.5vw;
   }
 }
 </style>
