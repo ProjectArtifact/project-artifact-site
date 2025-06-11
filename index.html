@@ -118,6 +118,16 @@ body {
       display: none;
     }
   }
+  .book-ad-image {
+  max-width: 700px;
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+.book-ad-image:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
 .site-footer {
   background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);
   color: #ebeded;
@@ -239,7 +249,7 @@ body {
     
 <section style="text-align: center; margin: 3rem auto;">
   <img src="assets/ProjectArtifact-3Dad-on-transparent.png" alt="Project Artifact - Coming This Fall"
-       style="max-width: 600px; width: 90%; height: auto; border-radius: 8px; box-shadow: 0 0 12px rgba(0,0,0,0.4);" />
+      class="book-ad-image" />
 </section>
   </main>
 </body>
