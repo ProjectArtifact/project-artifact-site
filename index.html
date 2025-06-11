@@ -118,8 +118,8 @@ body {
       display: none;
     }
   }
-  .site-footer {
-  background-color: #111; /* or match your dark theme */
+.site-footer {
+  background-color: #111;
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
@@ -137,16 +137,16 @@ body {
   gap: 1rem;
 }
 
-.social-icons a svg {
+.social-icons img {
   width: 28px;
   height: 28px;
-  fill: white;
+  filter: brightness(0) invert(1); /* makes black icons appear white */
   transition: transform 0.2s ease, filter 0.3s ease;
 }
 
-.social-icons a:hover svg {
+.social-icons a:hover img {
   transform: scale(1.1);
-  filter: brightness(1.4);
+  filter: brightness(1.5) invert(1);
 }
 
 @media (max-width: 600px) {
