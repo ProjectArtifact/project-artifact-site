@@ -1,3 +1,5 @@
+Grimm's image is too large. can we make it fit into the block better?
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -220,7 +222,7 @@ body {
 .image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -228,9 +230,12 @@ body {
 .headshot-image {
   width: 100%;
   height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 4px;
-  max-height: 100%; /* ensures it doesn't exceed container */
+  cursor: pointer;
+  display: block;
+  max-height: 100%;
 }
 
 .fade-overlay {
