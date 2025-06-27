@@ -178,7 +178,6 @@ body {
   align-items: flex-start;
   gap: 1.5rem;
   margin-bottom: 2rem;
-  flex-wrap: wrap;
 }
 
 .profile img {
@@ -190,23 +189,26 @@ body {
   flex-shrink: 0;
 }
 
-/* Responsive stacking on smaller screens */
-@media (max-width: 600px) {
+.profile p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Stack vertically only on small screens */
+@media (max-width: 768px) {
   .profile {
     flex-direction: column;
     align-items: center;
+    text-align: justify;
   }
 
   .profile img {
     max-width: 90%;
   }
-
-  .profile p {
-    margin-top: 1rem;
-    font-size: 1.05rem;
-    text-align: justify;
-  }
 }
+
 
 
     
