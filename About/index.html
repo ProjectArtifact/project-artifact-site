@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Artifact</title>
+  <title>About - Project Artifact</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700&family=Play&display=swap" rel="stylesheet" />
   <style>
-    /* Branding colors and fonts */
     :root {
       --color-bg: #263851;
       --color-accent: #c02082;
@@ -18,16 +17,16 @@
     * {
       box-sizing: border-box;
     }
-body {
-  margin: 0;
-  font-family: 'Play', sans-serif;
-  background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #ebeded;
-  line-height: 1.5;
-}
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);
+      color: var(--color-text-light);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      line-height: 1.5;
+    }
     a {
       color: var(--color-accent);
       text-decoration: none;
@@ -36,84 +35,161 @@ body {
       text-decoration: underline;
     }
     header {
-      text-align: center;
-      padding: 2rem 1rem 2rem;
-      background: linear-gradient(135deg, var(--color-bg), #3e5caa);
+      background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);
+      padding: 1rem 0;
     }
-    header img {
-      max-width: 250px;
-      width: 90vw;
-      height: auto;
-      margin-bottom: 1rem;
-    }
-    header h1 {
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
       font-family: var(--font-title);
+    }
+    nav a {
       font-weight: 700;
-      font-size: 3rem;
-      margin: 0 0 1rem;
-    }
-    header p {
-      font-size: 1.25rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
-    .btn-primary {
-      background-color: var(--color-accent);
       color: var(--color-text-light);
-      font-weight: 700;
-      padding: 0.75rem 2rem;
-      border-radius: 4px;
-      display: inline-block;
-      font-size: 1.1rem;
-      cursor: pointer;
-      border: none;
-      transition: background-color 0.3s ease;
     }
-    .btn-primary:hover {
-      background-color: #a01a6c;
+    .title-logo {
+      text-align: center;
+    }
+    .title-logo img {
+      max-width: 60%;
+      height: auto;
     }
     main {
-      max-width: 900px;
-      margin: 2rem auto 4rem;
-      padding: 0 1rem;
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
     }
     section {
       margin-bottom: 3rem;
     }
-    /* Trailer embed responsive */
-    .trailer-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      max-width: 100%;
-      background: #000;
+    h2 {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      border-bottom: 2px solid var(--color-accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .profile img {
+      width: 180px;
       border-radius: 8px;
     }
-    .trailer-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      border-radius: 8px;
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--color-accent);
+    }
+    .faq-item p {
+      margin: 0.5rem 0 0 1rem;
+    }
+    .site-footer {
+      background: linear-gradient(to right, #c02082 5%, #263851 30%, #263851 100%);
+      color: #ebeded;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .social-icons img {
+      width: 28px;
+      height: 28px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease, filter 0.3s ease;
+    }
+    .social-icons a:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.5) invert(1);
     }
   </style>
-<style>
-  @keyframes slowPulse {
-    0%, 100% { opacity: 0.05; transform: translateY(0); }
-    50% { opacity: 0.18; transform: translateY(3px); }
-  }
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="bios/index.html">Bios</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="title-logo">
+    <img src="assets/PA_Logo_Long.png" alt="Project Artifact Logo">
+  </div>
+</header>
 
-  @keyframes glitchFlicker {
-    0%, 95%, 100% { filter: none; }
-    96% { filter: contrast(1.5) brightness(1.3) hue-rotate(-5deg); }
-    97% { filter: contrast(0.9) brightness(0.7) hue-rotate(10deg); }
-    98% { filter: contrast(1.2) brightness(1.1); }
-    99% { filter: none; }
-  }
-  @media (max-width: 768px) {
-    .flair-image {
-      display: none;
-    }
+<main>
+  <section>
+    <h2>What is Project Artifact?</h2>
+    <p>Project Artifact is a graphic novel set in a near-future world ruled by megacorporations and shaped by emerging technologies. In the year 2257, Dr. Gideon Gates uses an AI-powered research tool to uncover disturbing truths about humanity's forgotten past. His discovery shakes the foundations of science, faith, and corporate control, leading him on a journey that could change the future—if he survives the fallout.</p>
+  </section>
+
+  <section>
+    <h2>About the Author</h2>
+    <div class="profile">
+      <img src="assets/author.jpg" alt="Author Headshot">
+      <p>Trey Bowling is a writer, storyteller, and creative leader based in Texas. With a background in multimedia communication and a passion for sci-fi grounded in theology and truth, he creates worlds that explore the tension between discovery and belief. Project Artifact is his debut graphic novel.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>About the Artist</h2>
+    <div class="profile">
+      <img src="assets/artist.jpg" alt="Artist Headshot">
+      <p>Daniele Aquilani is an Italian illustrator known for his dynamic characters, expressive linework, and cinematic layouts. His portfolio spans comics, concept art, and book covers. With Project Artifact, he brings a gritty elegance and emotional weight to the story’s cyber-dystopian vision.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <details>
+        <summary>Is Project Artifact appropriate for all ages?</summary>
+        <p>The graphic novel is best suited for ages 13 and up due to thematic elements, some violence, and mature subject matter.</p>
+      </details>
+    </div>
+    <div class="faq-item">
+      <details>
+        <summary>Will there be more issues?</summary>
+        <p>Yes. The first volume is the beginning of a larger story arc. Future volumes will expand the world and characters further.</p>
+      </details>
+    </div>
+    <div class="faq-item">
+      <details>
+        <summary>Is the story based on real history?</summary>
+        <p>Project Artifact is fictional but inspired by historical mysteries, archeology, and a biblical worldview.</p>
+      </details>
+    </div>
+    <div class="faq-item">
+      <details>
+        <summary>Where can I buy it?</summary>
+        <p>You can purchase it through the <a href="https://store.icr.org">ICR Store</a> or at select events and conventions.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div>
+    <p>&copy; 2025 Project Artifact</p>
+    <div class="social-icons">
+      <a href="https://facebook.com/ProjectArtifactGN" target="_blank"><img src="assets/facebook-icon-1.svg" alt="Facebook"></a>
+      <a href="https://instagram.com/projectartifactgn" target="_blank"><img src="assets/instagram-icon-1.svg" alt="Instagram"></a>
+      <a href="https://threads.net/projectartifactgn" target="_blank"><img src="assets/threads-1.svg" alt="Threads"></a>
+      <a href="https://x.com/ProjArtifactGN" target="_blank"><img src="assets/x-2.svg" alt="X"></a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
