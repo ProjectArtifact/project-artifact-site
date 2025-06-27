@@ -99,13 +99,25 @@ body {
       border: 0;
       border-radius: 8px;
     }
-        .bios-grid {
+.bios-grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(1, 1fr); /* Default: 1 per row */
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+  .bios-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 across on tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .bios-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 across on desktop */
+  }
 }
 }
   @keyframes slowPulse {
